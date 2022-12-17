@@ -6,7 +6,7 @@ console.log(galleryColection);
 
 
 const markup = createGalleryItemsMarkup(galleryItems);
-//console.log(markup);
+
 function createGalleryItemsMarkup(galleryItems) {
     return galleryItems.map(({ description, original, preview }) => {
     return `<div class="gallery__item">
@@ -37,13 +37,16 @@ function onClickItem(event) {
     
     
     const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" width="800" height="600">
-`)
+    <img src="${event.target.dataset.source}" width="800" height="600">`)
 
     instance.show()
+   
+    galleryColection.addEventListener('keydown', onEsc);
 
-//   instance.close()
-//   instance.close(() => console.log('lightbox not visible anymore'))
-
+   function onEsc(event) {
+    if (event.code === "Escape"){
+        instance.close();
+        console.log(event)
+    }
+ }
 }  
-
