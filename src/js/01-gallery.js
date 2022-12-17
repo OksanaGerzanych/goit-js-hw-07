@@ -2,8 +2,6 @@ import { galleryItems } from './gallery-items.js';
 console.log(galleryItems);
 
 const galleryColection = document.querySelector('.gallery');
-console.log(galleryColection);
-
 
 const markup = createGalleryItemsMarkup(galleryItems);
 

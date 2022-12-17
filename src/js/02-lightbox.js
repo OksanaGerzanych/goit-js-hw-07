@@ -3,8 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 const galleryColection = document.querySelector('.gallery');
-console.log(galleryColection);
-
 
 const markup = createGalleryItemsMarkup(galleryItems);
 
@@ -30,8 +28,8 @@ function onClickItem(event) {
     if (event.target.classList.contains('item')) {
     return;
     }
-    console.log(event.target);
+    
     var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionPosition:'bottom', captionDelay: 250 });
-    console.log(lightbox);
+   
 }
 
