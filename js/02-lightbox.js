@@ -21,15 +21,4 @@ function createGalleryItemsMarkup(galleryItems) {
 }
 galleryColection.insertAdjacentHTML("beforeend", markup);
 
-galleryColection.addEventListener('click', onClickItem);
-function onClickItem(event) {
-    event.preventDefault();
-   
-    if (event.target.classList.contains('item')) {
-    return;
-    }
-    
-    var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionPosition:'bottom', captionDelay: 250 });
-   
-}
-
+var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionPosition:'bottom', captionDelay: 250 });

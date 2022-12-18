@@ -27,18 +27,14 @@ galleryColection.addEventListener('click', onClickItem);
 
 function onClickItem(event) {
     event.preventDefault();
-   
-   if (event.target.classList.contains('gallery__item')) {
-    return;
-    } 
-    console.log(event.target.dataset.source);
-    
-    
-    const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" width="800" height="600">`)
+    const isGalleryImage = event.target.classList.contains('gallery__image');
+    if (!isGalleryImage) {
+        return;
+    }
 
-    instance.show()
-   
+    const dataSourceValue = event.target.dataset.source;
+    console.log(dataSourceValue)
+
     galleryColection.addEventListener('keydown', onEsc);
 
    function onEsc(event) {
@@ -46,5 +42,24 @@ function onClickItem(event) {
         instance.close();
         console.log(event)
     }
- }
-}  
+    }
+    
+    const options = {
+    closable: true,
+    onShow:  (instance) => { document.addEventListener('keydown', onEsc); },
+	onClose: (instance) => { document.removeEventListener('keydown', onEsc); },
+    }
+
+    
+    const instance = basicLightbox.create(`
+    <img src="${dataSourceValue}" width="800" height="600">`, options);
+
+    instance.show()
+   
+   
+}
+
+
+
+
+
